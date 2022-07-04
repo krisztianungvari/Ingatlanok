@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Ingatlanok
 {
@@ -126,10 +127,15 @@ namespace Ingatlanok
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
-            if (MessageBox.Show("Biztosan ki szeretne lépni?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Biztosan ki szeretne lépni?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
             {
-                // ha a nem re kattintok is kilép
+                // a kilépési folyamatot lehet vele megszakítni! A Form closing event-et indítottam el, és a Cancel = true ezt megszakítja.
+                e.Cancel = true;
+            }
+            else
+            {
+                
             }
          
             
@@ -155,16 +161,44 @@ namespace Ingatlanok
 
         private void button_torles_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("Biztosan törli?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (listBox_ingatlanok.SelectedIndex < 0)
             {
-                MessageBox.Show("Biztosan törli?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBox.Show("Nincs kiválasztott ingatlan!");
                 return;
             }
-            listBox_ingatlanok.Items.RemoveAt(listBox_ingatlanok.SelectedIndex);
+            var ingatlan = listBox_ingatlanok.SelectedItem;
+            int id;
+            if (ingatlan.GetType() == typeof(Csaladi))
+            {
+                Csaladi rekord = (Csaladi)listBox_ingatlanok.SelectedItem;
+                id = rekord.Idcsaladi;
+                sql.CommandText = $"DELETE FROM `csaladi` WHERE `csaladi`.`id_csaladi` = {id}";
+                sql.ExecuteNonQuery();
+                sql.CommandText = $"DELETE FROM `ingatlan` WHERE `ingatlan`.`id_ingatlan` = {id}";
+                sql.ExecuteNonQuery();
+                
+            }
+            else if (ingatlan.GetType() == typeof(Sorhaz))
+            {
+                Sorhaz rekord = (Sorhaz)listBox_ingatlanok.SelectedItem;
+                id = rekord.Idsorhaz;
+                sql.CommandText = $"DELETE FROM `sorhaz` WHERE `sorhaz`.`id_sorhaz` = {id}";
+                sql.ExecuteNonQuery();
+                sql.CommandText = $"DELETE FROM `ingatlan` WHERE `ingatlan`.`id_ingatlan` = {id}";
+                sql.ExecuteNonQuery();
 
-            //string torlesCsaladi = $"DELETE FROM `ingatlan` WHERE `ingatlan`.`id_ingatlan` = {"id_csaladi"}”";
-            //frissit();
+            }
+            else if (ingatlan.GetType() == typeof(Penthouse))
+            {
+                Penthouse rekord = (Penthouse)listBox_ingatlanok.SelectedItem;
+                id = rekord.Idpenthouse;
+                sql.CommandText = $"DELETE FROM `penthouse` WHERE `penthouse`.`id_penthouse` = {id}";
+                sql.ExecuteNonQuery();
+                sql.CommandText = $"DELETE FROM `ingatlan` WHERE `ingatlan`.`id_ingatlan` = {id}";
+                sql.ExecuteNonQuery();
+            }
+            frissit();
 
 
         }
@@ -178,26 +212,62 @@ namespace Ingatlanok
             var ingatlan = listBox_ingatlanok.SelectedItem;
             if (ingatlan.GetType() == typeof(Csaladi))
             {
-                Form_Csaladi csaladi = new Form_Csaladi("Show");
-                // Az ablakból létrehoztunk egy példányt
-                csaladi.Show(); //Megjelenítjük a felhasználó számára!
+                Csaladi rekord = (Csaladi)listBox_ingatlanok.SelectedItem;
+                string text = "ingatlan címe: " + rekord.Cim;
+                text += Environment.NewLine + "Valóban menteni akarja?";
+                rekord_mentes(rekord.tocsv());
+                
             }
             else if (ingatlan.GetType() == typeof(Sorhaz))
             {
-
-                Form_Sorhaz sorhaz = new Form_Sorhaz("Show");
-                sorhaz.Show();
+                Sorhaz rekord = (Sorhaz)listBox_ingatlanok.SelectedItem;
+                string text = "ingatlan címe: " + rekord.Cim;
+                text += Environment.NewLine + "Valóban menteni akarja?";
+                rekord_mentes(rekord.tocsv());
             }
             else if (ingatlan.GetType() == typeof(Penthouse))
             {
-
-                Form_Penthouse penthouse = new Form_Penthouse("Show");
-                penthouse.Show();
+                Penthouse rekord = (Penthouse)listBox_ingatlanok.SelectedItem;
+                string text = "ingatlan címe: " + rekord.Cim;
+                text += Environment.NewLine + "Valóban menteni akarja?";
+                rekord_mentes(rekord.tocsv());
             }
             else
             {
                 MessageBox.Show("Egyik sem!");
             }
+        }
+
+        private void rekord_mentes(string text)
+        {
+            if (MessageBox.Show(text,"Ingatlan mentése",MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
+            {
+                SaveFileDialog savefileDialog = new SaveFileDialog();
+                savefileDialog.Filter = "CSV file|*.csv"; //megadaja az operációs rendszernek hogy mi legyen a kiterjesztés (csv,html)
+                savefileDialog.ShowDialog();
+                if (savefileDialog.FileName!= "")
+                {
+                    //Érvényes fájlnév! Kezdődhet a mentés
+                    try
+                    {
+                        using (StreamWriter sw = new StreamWriter(savefileDialog.FileName))
+                        {
+                            sw.WriteLine(text);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    MessageBox.Show("Sikeres mentés!");
+                }
+                else
+                {
+                    MessageBox.Show("A mentés sikertelen!");
+                }
+            
+            }
+           
         }
     }
 }

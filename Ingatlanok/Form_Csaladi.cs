@@ -14,11 +14,15 @@ namespace Ingatlanok
     public partial class Form_Csaladi : Form
     {
         string funkcio;
-        Form form;
+        
         public Form_Csaladi(string funkcio)
         {
             InitializeComponent();
             this.funkcio = funkcio;
+            //if (this.funkcio.Equals(""))
+            //{
+
+            //}
         }
 
         private void button_ujCsaladi_Click(object sender, EventArgs e)
@@ -51,17 +55,6 @@ namespace Ingatlanok
 
         }
 
-        private void Form_Csaladi_Load(object sender, EventArgs e)
-        {
-            if (funkcio.Equals("Show"))
-            {
-                button_ujCsaladi.Hide();
-                //csaladi  = (Form_Csaladi)Program.formnyito.listBox_ingatlanok.SelectedItem;
-                //textBox_CsaladiCim.Text = csaladi.Cim;
-                //textBox_CsaladiCim.ReadOnly = true;
-                //numeric_IranyarCsaladi.Value = csaladi.
     
-            }
-        }
     }
 }

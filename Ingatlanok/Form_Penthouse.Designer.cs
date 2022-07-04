@@ -30,7 +30,6 @@ namespace Ingatlanok
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_MentesPenthouse = new System.Windows.Forms.Button();
             this.button_ujPenthouse = new System.Windows.Forms.Button();
             this.numeric_ErkelyPenthouse = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@ namespace Ingatlanok
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button_MentesPenthouse);
             this.groupBox1.Controls.Add(this.button_ujPenthouse);
             this.groupBox1.Controls.Add(this.numeric_ErkelyPenthouse);
             this.groupBox1.Controls.Add(this.label6);
@@ -70,19 +68,10 @@ namespace Ingatlanok
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 289);
+            this.groupBox1.Size = new System.Drawing.Size(303, 258);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Új Penthouse";
-            // 
-            // button_MentesPenthouse
-            // 
-            this.button_MentesPenthouse.Location = new System.Drawing.Point(7, 249);
-            this.button_MentesPenthouse.Name = "button_MentesPenthouse";
-            this.button_MentesPenthouse.Size = new System.Drawing.Size(163, 23);
-            this.button_MentesPenthouse.TabIndex = 41;
-            this.button_MentesPenthouse.Text = "Mentés CSV be";
-            this.button_MentesPenthouse.UseVisualStyleBackColor = true;
             // 
             // button_ujPenthouse
             // 
@@ -220,7 +209,7 @@ namespace Ingatlanok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 314);
+            this.ClientSize = new System.Drawing.Size(320, 275);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_Penthouse";
             this.Text = "Form_Penthouse";
@@ -238,7 +227,6 @@ namespace Ingatlanok
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button_MentesPenthouse;
         private System.Windows.Forms.Button button_ujPenthouse;
         private System.Windows.Forms.NumericUpDown numeric_ErkelyPenthouse;
         private System.Windows.Forms.Label label6;

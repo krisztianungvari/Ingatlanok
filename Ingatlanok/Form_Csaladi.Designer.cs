@@ -30,7 +30,6 @@ namespace Ingatlanok
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_MentesCsaladi = new System.Windows.Forms.Button();
             this.button_ujCsaladi = new System.Windows.Forms.Button();
             this.numeric_GarazsCsaladi = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@ namespace Ingatlanok
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button_MentesCsaladi);
             this.groupBox1.Controls.Add(this.button_ujCsaladi);
             this.groupBox1.Controls.Add(this.numeric_GarazsCsaladi);
             this.groupBox1.Controls.Add(this.label6);
@@ -70,19 +68,10 @@ namespace Ingatlanok
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 296);
+            this.groupBox1.Size = new System.Drawing.Size(322, 272);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Új Családiház";
-            // 
-            // button_MentesCsaladi
-            // 
-            this.button_MentesCsaladi.Location = new System.Drawing.Point(7, 258);
-            this.button_MentesCsaladi.Name = "button_MentesCsaladi";
-            this.button_MentesCsaladi.Size = new System.Drawing.Size(163, 23);
-            this.button_MentesCsaladi.TabIndex = 13;
-            this.button_MentesCsaladi.Text = "Mentés CSV be";
-            this.button_MentesCsaladi.UseVisualStyleBackColor = true;
             // 
             // button_ujCsaladi
             // 
@@ -92,7 +81,6 @@ namespace Ingatlanok
             this.button_ujCsaladi.TabIndex = 12;
             this.button_ujCsaladi.Text = "Új Családiház";
             this.button_ujCsaladi.UseVisualStyleBackColor = true;
-            this.button_ujCsaladi.Click += new System.EventHandler(this.button_ujCsaladi_Click);
             // 
             // numeric_GarazsCsaladi
             // 
@@ -215,11 +203,10 @@ namespace Ingatlanok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 329);
+            this.ClientSize = new System.Drawing.Size(347, 295);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_Csaladi";
             this.Text = "Form_Csaladi";
-            this.Load += new System.EventHandler(this.Form_Csaladi_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_GarazsCsaladi)).EndInit();
@@ -238,7 +225,6 @@ namespace Ingatlanok
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_CsaladiCim;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_MentesCsaladi;
         private System.Windows.Forms.Button button_ujCsaladi;
         private System.Windows.Forms.NumericUpDown numeric_GarazsCsaladi;
         private System.Windows.Forms.Label label6;

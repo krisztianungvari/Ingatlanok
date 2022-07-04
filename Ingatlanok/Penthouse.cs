@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ingatlanok
 {
-    class Penthouse : Ingatlan
+    class Penthouse : Ingatlan, Interface_ToCSV
     {
         int idpenthouse;
         int emelet;
@@ -22,6 +22,11 @@ namespace Ingatlanok
         public int Idpenthouse { get => idpenthouse; set => idpenthouse = value; }
         public int Emelet { get => emelet; set => emelet = value; }
         public int Erkely { get => erkely; set => erkely = value; }
+
+        public string tocsv()
+        {
+            return string.Join(";", this.Cim, this.Iranyar.ToString(), this.Alapterulet.ToString(), this.Berletidij.ToString(), emelet, erkely);
+        }
 
         public override string ToString()
         {
