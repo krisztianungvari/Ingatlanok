@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Ingatlan.cs" />
     <Compile Include="Interface_ToCSV.cs" />
+    <Compile Include="Interface_to_HTML.cs" />
     <Compile Include="Penthouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

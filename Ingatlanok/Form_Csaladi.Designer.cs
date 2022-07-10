@@ -81,6 +81,7 @@ namespace Ingatlanok
             this.button_ujCsaladi.TabIndex = 12;
             this.button_ujCsaladi.Text = "Új Családiház";
             this.button_ujCsaladi.UseVisualStyleBackColor = true;
+            this.button_ujCsaladi.Click += new System.EventHandler(this.button_ujCsaladi_Click);
             // 
             // numeric_GarazsCsaladi
             // 

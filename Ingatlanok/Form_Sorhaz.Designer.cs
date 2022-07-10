@@ -30,7 +30,6 @@ namespace Ingatlanok
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_MentesSor = new System.Windows.Forms.Button();
             this.button_ujSor = new System.Windows.Forms.Button();
             this.numeric_GarazsSor = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@ namespace Ingatlanok
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button_MentesSor);
             this.groupBox1.Controls.Add(this.button_ujSor);
             this.groupBox1.Controls.Add(this.numeric_GarazsSor);
             this.groupBox1.Controls.Add(this.label6);
@@ -70,19 +68,10 @@ namespace Ingatlanok
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(306, 299);
+            this.groupBox1.Size = new System.Drawing.Size(306, 267);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Új Sorház";
-            // 
-            // button_MentesSor
-            // 
-            this.button_MentesSor.Location = new System.Drawing.Point(7, 253);
-            this.button_MentesSor.Name = "button_MentesSor";
-            this.button_MentesSor.Size = new System.Drawing.Size(163, 23);
-            this.button_MentesSor.TabIndex = 27;
-            this.button_MentesSor.Text = "Mentés CSV be";
-            this.button_MentesSor.UseVisualStyleBackColor = true;
             // 
             // button_ujSor
             // 
@@ -220,7 +209,7 @@ namespace Ingatlanok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 328);
+            this.ClientSize = new System.Drawing.Size(338, 288);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_Sorhaz";
             this.Text = "Form_Sorhaz";
@@ -238,7 +227,6 @@ namespace Ingatlanok
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button_MentesSor;
         private System.Windows.Forms.Button button_ujSor;
         private System.Windows.Forms.NumericUpDown numeric_GarazsSor;
         private System.Windows.Forms.Label label6;

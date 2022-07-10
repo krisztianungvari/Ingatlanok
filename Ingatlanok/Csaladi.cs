@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ingatlanok 
 {
-    class Csaladi : Ingatlan , Interface_ToCSV
+    class Csaladi : Ingatlan , Interface_ToCSV, Interface_to_HTML
     {
         int idcsaladi;
         int telekterulet;
@@ -31,6 +31,11 @@ namespace Ingatlanok
         public override string ToString()
         {
             return Cim;
+        }
+        public string toHTML()
+        {
+            string export = "<tr><td>" + string.Join("</td><td>", this.Cim.ToString(), this.Iranyar, this.Alapterulet, this.Berletidij, telekterulet, garazs) + "</td></tr>";
+            return export;
         }
     }
 }

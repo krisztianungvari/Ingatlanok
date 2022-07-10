@@ -62,6 +62,7 @@ namespace Ingatlanok
             this.button_export.TabIndex = 6;
             this.button_export.Text = "Exportálás";
             this.button_export.UseVisualStyleBackColor = true;
+            this.button_export.Click += new System.EventHandler(this.button_export_Click);
             // 
             // button_torles
             // 

@@ -136,9 +136,7 @@ namespace Ingatlanok
             else
             {
                 
-            }
-         
-            
+            }   
         }
 
         private void button_ujcsaladi_Click(object sender, EventArgs e)
@@ -161,7 +159,12 @@ namespace Ingatlanok
 
         private void button_torles_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Biztosan törli?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult torles = MessageBox.Show("Biztosan törli?", "Kérdés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (torles == DialogResult.No)
+            {
+                return;
+            }
+
             if (listBox_ingatlanok.SelectedIndex < 0)
             {
                 MessageBox.Show("Nincs kiválasztott ingatlan!");
@@ -199,8 +202,6 @@ namespace Ingatlanok
                 sql.ExecuteNonQuery();
             }
             frissit();
-
-
         }
 
         private void listBox_ingatlanok_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -268,6 +269,28 @@ namespace Ingatlanok
             
             }
            
+        }
+
+        private void button_export_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nincs kész!");
+
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //saveFileDialog.Title = "adatok mentése";
+            //saveFileDialog.Filter = "HTML file|*.html";
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog.FileName))
+            //{
+            //    using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+            //    {
+            //        sw.WriteLine(Csaladi.toHTML());
+            //    }
+
+            //    MessageBox.Show("Sikeres mentés!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Nem történt mentés!");
+            //}
         }
     }
 }
